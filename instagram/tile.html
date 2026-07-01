@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>IG tile · Ser Micelio</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  /* Fuentes de marca (Kopi Senja NO tiene tildes → titulares sin acentos; texto largo en Poppins) */
+  @font-face{font-family:"Kopi Senja Sans";src:url("../assets/Kopi Senja Sans.otf") format("opentype");font-display:swap}
+  @font-face{font-family:"Kopi Senja Script";src:url("../assets/Kopi Senja Script.otf") format("opentype");font-display:swap}
+  :root{
+    --navy:#231E58; --blue:#234C9B; --teal:#1EADA6; --pink:#E7197B;
+    --yellow:#FFDA00; --cream:#F7F3EC; --ink:#1a1733;
+    --display:"Kopi Senja Sans","Poppins",sans-serif;
+    --script:"Kopi Senja Script","Kaushan Script",cursive;
+    --body:"Poppins",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:var(--body);-webkit-font-smoothing:antialiased}
+  i.fa-solid,i.fa-regular,i.fa-brands{font-family:"Font Awesome 6 Free","Font Awesome 6 Brands"}
+  html,body{background:#0b0a1a}
+  .tile{width:1080px;height:1350px;position:relative;overflow:hidden;padding:92px;display:flex;flex-direction:column;color:var(--ink)}
+  .mid{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
+
+  /* fondos por tile */
+  .bg-navy{background:radial-gradient(125% 90% at 82% -10%, #3a2f7a 0%, #231E58 52%, #191545 100%);color:var(--cream)}
+  .bg-blue{background:radial-gradient(120% 90% at 15% 0%, #2f5fb8 0%, #234C9B 55%, #1c3d80 100%);color:var(--cream)}
+  .bg-teal{background:radial-gradient(120% 90% at 85% 10%, #2ec7bf 0%, #1EADA6 55%, #178f89 100%);color:#08312f}
+  .bg-pink{background:radial-gradient(120% 90% at 20% -5%, #ff3d97 0%, #E7197B 55%, #c0135f 100%);color:var(--cream)}
+  .bg-cream{background:var(--cream);color:var(--navy)}
+
+  /* tipografia */
+  .eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.22em;font-size:26px;font-weight:700;display:flex;align-items:center;gap:16px}
+  .k-h1{font-family:var(--display);font-size:150px;line-height:.9;letter-spacing:-.01em}
+  .k-h2{font-family:var(--display);font-size:104px;line-height:.94}
+  .script{font-family:var(--script);line-height:1.05}
+  .sub{font-family:var(--body);font-weight:300;font-size:39px;line-height:1.4;max-width:820px}
+  .body{font-family:var(--body);font-weight:400;font-size:38px;line-height:1.5;max-width:860px}
+
+  /* footer comun */
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:28px;font-weight:500;padding-top:34px;opacity:.92}
+  .foot .r{opacity:.85}
+  .foot i{margin-right:12px}
+
+  /* piezas */
+  .pill{display:inline-flex;align-items:center;gap:16px;align-self:flex-start;border-radius:60px;padding:18px 34px;font-family:var(--display);font-size:29px;letter-spacing:.04em;background:var(--yellow);color:var(--navy)}
+  .logo-top{width:150px;margin-bottom:44px}
+  .checks{display:flex;flex-direction:column;gap:30px;margin-top:20px}
+  .check{display:flex;align-items:flex-start;gap:26px;font-size:40px;font-weight:500;line-height:1.3}
+  .check .ic{flex-shrink:0;width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px}
+  .chips{display:flex;flex-wrap:wrap;gap:18px;margin-top:48px}
+  .chip{border-radius:50px;padding:16px 34px;font-size:31px;font-weight:600;font-family:var(--display);letter-spacing:.02em}
+  .tools{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:20px}
+  .tool{display:flex;align-items:center;gap:22px;font-size:37px;font-weight:500}
+  .tool i{width:56px;font-size:40px;text-align:center}
+  .stats{display:flex;flex-direction:column;gap:46px;margin-top:8px}
+  .stat{display:flex;align-items:baseline;gap:34px}
+  .stat b{font-family:var(--display);font-size:150px;line-height:.8;min-width:190px}
+  .stat .st{font-size:40px;font-weight:600;line-height:1.15}
+  .stat .st small{display:block;font-weight:300;font-size:31px;opacity:.85;margin-top:8px}
+  .quote{font-size:58px;font-weight:400;line-height:1.34;font-style:italic}
+  .quote::before{content:"\201C";font-family:Georgia,serif;font-size:150px;line-height:0;position:relative;top:44px;margin-right:6px;opacity:.35}
+  .steps{display:flex;flex-direction:column;gap:34px;margin-top:52px}
+  .step{display:flex;align-items:center;gap:30px;font-size:42px;font-weight:500}
+  .step .n{flex-shrink:0;width:82px;height:82px;border-radius:50%;background:var(--yellow);color:var(--navy);font-family:var(--display);font-size:44px;display:flex;align-items:center;justify-content:center}
+  .ctabox{margin-top:60px;background:var(--yellow);color:var(--navy);border-radius:26px;padding:38px 44px;font-family:var(--display);font-size:46px;display:flex;align-items:center;gap:24px;align-self:flex-start}
+  .about{display:flex;align-items:center;gap:56px}
+  .about .photo{width:420px;height:520px;border-radius:34px;object-fit:cover;flex-shrink:0;box-shadow:0 30px 70px rgba(35,30,88,.3)}
+  .creds{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .creds span{border:2px solid rgba(35,30,88,.2);border-radius:40px;padding:12px 24px;font-size:26px;font-weight:500}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const HANDLE = '@evesujo';
+const DOM = 'sermicelio.com';
+function foot(dark){
+  return `<div class="foot"><span><i class="fa-brands fa-instagram"></i>${HANDLE}</span><span class="r">${DOM}</span></div>`;
+}
+
+// 1 · Portada
+function t1(){return `<div class="tile bg-navy">
+  <div class="mid">
+    <img class="logo-top" src="../assets/logo-hongo-inv.png" alt="">
+    <span class="pill"><i class="fa-solid fa-star"></i> Inicia el 25 de julio</span>
+    <div class="k-h1" style="margin-top:44px">CreaTuVida</div>
+    <div class="script" style="font-size:92px;color:var(--yellow);margin-top:14px">Creatividad &amp; Micro</div>
+    <div class="sub" style="margin-top:40px">Programa de acompañamiento grupal online de 3 meses.</div>
+  </div>
+  ${foot()}
+</div>`}
+
+// 2 · El programa
+function t2(){return `<div class="tile bg-cream">
+  <div class="mid">
+    <div class="eyebrow" style="color:var(--teal)"><i class="fa-solid fa-seedling"></i> El programa</div>
+    <div class="k-h2" style="margin-top:26px">Volver<br>a vos</div>
+    <div class="body" style="margin-top:40px;color:#3a3560">Un acompañamiento para quienes tienen mucho para ofrecer y necesitan claridad, confianza y una estructura que los ayude a transformar sus ideas en un proyecto que disfruten y puedan sostener en el tiempo.</div>
+  </div>
+  ${foot()}
+</div>`}
+
+// 3 · Es para vos si...
+function t3(){return `<div class="tile bg-teal">
+  <div class="mid">
+    <div class="eyebrow" style="color:#06413d"><i class="fa-solid fa-heart"></i> Es para vos</div>
+    <div class="k-h2" style="margin-top:22px">Si estas<br>buscando</div>
+    <div class="checks" style="margin-top:44px">
+      <div class="check"><span class="ic" style="background:var(--yellow);color:var(--navy)"><i class="fa-solid fa-check"></i></span> Emprender con más consciencia, orden y constancia.</div>
+      <div class="check"><span class="ic" style="background:var(--yellow);color:var(--navy)"><i class="fa-solid fa-check"></i></span> Diseñar una vida con más libertad y tus propios ritmos.</div>
+      <div class="check"><span class="ic" style="background:var(--yellow);color:var(--navy)"><i class="fa-solid fa-check"></i></span> Ganar claridad para decidir y avanzar sin procrastinar.</div>
+      <div class="check"><span class="ic" style="background:var(--yellow);color:var(--navy)"><i class="fa-solid fa-check"></i></span> Recuperar tu energía, motivación y creatividad.</div>
+    </div>
+  </div>
+  ${foot()}
+</div>`}
+
+// 4 · Microdosis
+function t4(){return `<div class="tile bg-navy">
+  <div class="mid">
+    <div class="eyebrow" style="color:var(--teal)"><i class="fa-solid fa-circle-info"></i> En simple</div>
+    <div class="k-h2" style="margin-top:22px">Las<br>microdosis</div>
+    <div class="body" style="margin-top:40px;color:#d8d4f0">Cantidades muy por debajo del umbral de las alucinaciones: mantenés la presencia y obtenés los beneficios de los psicodélicos, subperceptual para el día a día.</div>
+    <div class="chips">
+      <span class="chip" style="background:rgba(122,193,66,0);border:2px solid var(--teal);color:var(--teal)">amor</span>
+      <span class="chip" style="background:var(--pink);color:var(--cream)">claridad</span>
+      <span class="chip" style="background:var(--yellow);color:var(--navy)">creatividad</span>
+      <span class="chip" style="border:2px solid rgba(255,255,255,.4);color:var(--cream)">empatia</span>
+    </div>
+  </div>
+  ${foot()}
+</div>`}
+
+// 5 · Proceso integral
+function t5(){return `<div class="tile bg-cream">
+  <div class="mid">
+    <div class="eyebrow" style="color:var(--pink)"><i class="fa-solid fa-hands-holding-circle"></i> Un proceso integral</div>
+    <div class="k-h2" style="margin-top:26px">No solo<br>la ingesta</div>
+    <div class="tools" style="color:#2a2550">
+      <div class="tool"><i class="fa-solid fa-person-rays" style="color:var(--teal)"></i> Movimiento intuitivo</div>
+      <div class="tool"><i class="fa-solid fa-pen-nib" style="color:var(--pink)"></i> Ejercicios de escritura</div>
+      <div class="tool"><i class="fa-solid fa-spa" style="color:var(--blue)"></i> Meditaciones</div>
+      <div class="tool"><i class="fa-solid fa-people-group" style="color:var(--teal)"></i> Círculos de palabra</div>
+      <div class="tool"><i class="fa-solid fa-hand-sparkles" style="color:var(--pink)"></i> Consciencia corporal</div>
+      <div class="tool"><i class="fa-solid fa-fire" style="color:var(--blue)"></i> Conexión con el ritual</div>
+    </div>
+  </div>
+  ${foot()}
+</div>`}
+
+// 6 · Como se organiza (stats)
+function t6(){return `<div class="tile bg-blue">
+  <div class="mid">
+    <div class="eyebrow" style="color:var(--yellow)"><i class="fa-solid fa-compass"></i> El recorrido</div>
+    <div class="stats" style="margin-top:40px">
+      <div class="stat"><b style="color:var(--yellow)">8</b><span class="st">Encuentros en vivo<small>1 individual + 7 grupales, con invitadas especiales</small></span></div>
+      <div class="stat"><b style="color:var(--yellow)">3</b><span class="st">Meses de duración<small>Acompañamiento por WhatsApp toda la semana</small></span></div>
+      <div class="stat"><b style="color:var(--yellow)">+</b><span class="st">Plataforma y regalos<small>Ejercicios, podcast, libros y cuadernos de registro</small></span></div>
+    </div>
+  </div>
+  ${foot()}
+</div>`}
+
+// 7 · Testimonio
+function t7(){return `<div class="tile bg-pink">
+  <div class="mid">
+    <div class="eyebrow" style="color:var(--cream)"><i class="fa-solid fa-quote-right"></i> Lo que cuentan</div>
+    <div class="quote" style="margin-top:20px;color:var(--cream)">Me volví a conectar conmigo. Este proceso marcó un hermoso antes y después.</div>
+    <div class="script" style="font-size:56px;color:var(--yellow);margin-top:38px">una participante</div>
+  </div>
+  ${foot()}
+</div>`}
+
+// 8 · Sobre mi
+function t8(){return `<div class="tile bg-cream">
+  <div class="mid">
+    <div class="about">
+      <img class="photo" src="../assets/eve.jpeg" alt="Eve">
+      <div>
+        <div class="eyebrow" style="color:var(--teal)"><i class="fa-solid fa-leaf"></i> Sobre mi</div>
+        <div class="k-h2" style="font-size:88px;margin-top:18px">Soy Eve</div>
+        <div class="script" style="font-size:64px;color:var(--pink);margin-top:6px">Ser Micelio</div>
+        <div class="body" style="font-size:34px;margin-top:28px;color:#3a3560">Acompaño a otras personas a reconectar con su creatividad y crear una vida más libre, sostenible y alineada con sus tiempos.</div>
+      </div>
+    </div>
+    <div class="creds" style="color:#3a3560">
+      <span>Lic. en Psicopedagogía</span><span>Terapia con psicodélicos</span><span>Fito y fungiterapia</span><span>Diseño Humano</span>
+    </div>
+  </div>
+  ${foot()}
+</div>`}
+
+// 9 · CTA
+function t9(){return `<div class="tile bg-navy">
+  <div class="mid">
+    <div class="eyebrow" style="color:var(--yellow)"><i class="fa-solid fa-list-check"></i> Para empezar</div>
+    <div class="k-h2" style="margin-top:22px">Crea<br>tu vida</div>
+    <div class="steps">
+      <div class="step"><span class="n">1</span> Anotate en el formulario (link en la bio)</div>
+      <div class="step"><span class="n">2</span> Coordinamos tu llamada 1:1 inicial</div>
+      <div class="step"><span class="n">3</span> Arrancamos juntas el 25 de julio</div>
+    </div>
+    <div class="ctabox"><i class="fa-solid fa-paper-plane"></i> Escribime &mdash; link en la bio</div>
+  </div>
+  ${foot()}
+</div>`}
+
+const T = {1:t1,2:t2,3:t3,4:t4,5:t5,6:t6,7:t7,8:t8,9:t9};
+const n = Number(new URLSearchParams(location.search).get('n')||1);
+document.getElementById('root').innerHTML = (T[n]||t1)();
+</script>
+</body>
+</html>

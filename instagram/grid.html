@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>IG preview · Ser Micelio</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#231E58;--blue:#234C9B;--teal:#1EADA6;--pink:#E7197B;--yellow:#FFDA00;--cream:#F7F3EC}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{width:1080px;background:#fff;color:#1a1733}
+  .phone{width:1080px;background:#fff}
+  /* header */
+  .top{display:flex;align-items:center;gap:50px;padding:56px 60px 30px}
+  .ava{width:210px;height:210px;border-radius:50%;flex-shrink:0;overflow:hidden;
+    background:var(--navy);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 0 5px #fff,0 0 0 10px var(--pink)}
+  .ava img{width:100%;height:100%;object-fit:cover}
+  .meta{flex:1}
+  .stats{display:flex;gap:58px;margin-bottom:20px}
+  .stat{text-align:center}
+  .stat b{display:block;font-size:40px;font-weight:700;color:var(--navy)}
+  .stat span{font-size:26px;color:#6a6580}
+  .handle{font-size:42px;font-weight:600;letter-spacing:-.01em;color:var(--navy)}
+  .info{padding:0 60px 28px}
+  .name{font-size:31px;font-weight:600;color:var(--navy)}
+  .cat{font-size:28px;color:var(--teal);font-weight:600;margin:2px 0 14px}
+  .bio{font-size:29px;line-height:1.45;color:#332e52}
+  .bio .lnk{color:var(--blue);font-weight:600}
+  .btns{display:flex;gap:16px;padding:6px 60px 40px}
+  .btn{flex:1;text-align:center;padding:22px;border-radius:14px;font-size:30px;font-weight:600}
+  .btn.p{background:var(--pink);color:#fff}
+  .btn.s{background:#f0eef6;color:var(--navy)}
+  .tabs{display:flex;border-top:2px solid #eee}
+  .tab{flex:1;text-align:center;padding:28px;font-size:34px;color:#a8a4b8}
+  .tab.on{color:var(--navy);border-top:4px solid var(--navy);margin-top:-2px}
+  /* grid con tiles en vivo (iframes escalados) */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px 0 0}
+  .cell{position:relative;width:100%;padding-bottom:125%;overflow:hidden;background:var(--navy)}
+  .cell iframe{position:absolute;top:0;left:0;width:1080px;height:1350px;border:0;
+    transform:scale(0.32840);transform-origin:top left;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="top">
+    <div class="ava"><img src="../assets/logo-sello.png" alt="Ser Micelio"></div>
+    <div class="meta">
+      <div class="stats">
+        <div class="stat"><b>9</b><span>publicaciones</span></div>
+        <div class="stat"><b>—</b><span>seguidores</span></div>
+        <div class="stat"><b>—</b><span>seguidos</span></div>
+      </div>
+      <div class="handle">evesujo</div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="name">Ser Micelio · Holistic Micro</div>
+    <div class="cat">Acompañamiento holístico · Microdosis</div>
+    <div class="bio">🍄 CreaTuVida — creatividad &amp; micro<br>Programa grupal online de 3 meses<br>✨ Reconectá con tu intuición y tu proyecto<br><span class="lnk">sermicelio.com</span></div>
+  </div>
+  <div class="btns">
+    <div class="btn p">Seguir</div>
+    <div class="btn s">Mensaje</div>
+    <div class="btn s">Contacto</div>
+  </div>
+  <div class="tabs"><div class="tab on">▦ Publicaciones</div><div class="tab">Reels</div><div class="tab">Etiquetas</div></div>
+  <div class="grid" id="grid"></div>
+</div>
+<script>
+  // Feed: el post 1 (portada) va arriba a la izquierda; IG los muestra del mas nuevo al mas viejo.
+  const grid = document.getElementById('grid');
+  for(let n=1;n<=9;n++){
+    const c = document.createElement('div');
+    c.className = 'cell';
+    c.innerHTML = `<iframe src="tile.html?n=${n}" scrolling="no" loading="lazy"></iframe>`;
+    grid.appendChild(c);
+  }
+</script>
+</body>
+</html>
