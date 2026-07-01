@@ -1,8 +1,4 @@
-@font-face{
-  font-family:"Kopi Senja Sans";
-  src:url("assets/Kopi Senja Sans.otf") format("opentype");
-  font-weight:normal;font-display:swap;
-}
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap");
 @font-face{
   font-family:"Kopi Senja Script";
   src:url("assets/Kopi Senja Script.otf") format("opentype");
@@ -16,7 +12,7 @@
   --yellow:#FFDA00;
   --cream:#F7F3EC;
   --ink:#1a1733;
-  --display:"Kopi Senja Sans","Poppins",sans-serif;
+  --display:"Quicksand","Poppins",sans-serif;
   --script:"Kopi Senja Script","Kaushan Script",cursive;
   --body:"Poppins",sans-serif;
 }
