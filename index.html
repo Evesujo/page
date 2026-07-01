@@ -38,7 +38,7 @@
     <img class="logo-top" src="assets/logo-hongo.png" alt="Ser Micelio">
     <h1>CreaTuVida<span class="script">Creatividad &amp; Micro</span></h1>
     <p class="lead">Programa de acompañamiento grupal online de 3 meses para quienes sienten que tienen mucho para ofrecer, pero necesitan claridad, confianza y una estructura que lxs ayude a transformar sus ideas en un proyecto tangible que disfruten, puedan sostener en el tiempo y les dé libertad en el día a día.</p>
-    <span class="start-pill"><i class="fa-solid fa-star"></i> Inicia el 25 de julio</span>
+    <span class="start-pill"><i class="fa-solid fa-star"></i> Inicia el <span id="fecha-inicio">25 de julio</span></span>
     <div class="btns">
       <a href="#inscribirme" class="btn">Quiero pre-inscribirme</a>
       <a href="#programa" class="btn pink">Conocer el programa</a>
@@ -159,7 +159,7 @@
       <p class="eyebrow">Detalles de encuentros</p>
       <h2>El recorrido, encuentro por encuentro</h2>
     </div>
-    <div class="timeline">
+    <div class="timeline" id="timeline">
       <div class="tl-item"><div class="tl-card">
         <span class="date">Fecha a coordinar</span>
         <h3>1 · Encuentro individual</h3>
@@ -334,6 +334,28 @@
   document.querySelectorAll('#navlinks a').forEach(a=>{
     a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open'));
   });
+
+  // Fechas editables desde datos.json (fecha de inicio + cronograma de encuentros)
+  const escaparHTML = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  fetch('datos.json')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(datos => {
+      if (datos.inicio) {
+        document.getElementById('fecha-inicio').textContent = datos.inicio;
+        const meta = document.querySelector('meta[name="description"]');
+        if (meta) meta.setAttribute('content', meta.getAttribute('content').replace(/Inicia el [^.]*\./, 'Inicia el ' + datos.inicio + '.'));
+      }
+      if (Array.isArray(datos.encuentros) && datos.encuentros.length) {
+        document.getElementById('timeline').innerHTML = datos.encuentros.map(e => `
+      <div class="tl-item"><div class="tl-card">
+        <span class="date">${escaparHTML(e.fecha)}</span>
+        <h3>${escaparHTML(e.titulo)}</h3>
+        ${e.invitado ? `<p class="guest">${escaparHTML(e.invitado)}</p>` : ''}
+        <p>${escaparHTML(e.descripcion)}</p>
+      </div></div>`).join('');
+      }
+    })
+    .catch(() => { /* si datos.json no carga, queda el contenido de respaldo del HTML */ });
 </script>
 </body>
 </html>

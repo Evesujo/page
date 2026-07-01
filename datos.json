@@ -1,0 +1,54 @@
+{
+  "_ayuda": "Editá acá las fechas del programa. 'inicio' es el texto que aparece en la etiqueta 'Inicia el ...' del inicio. En 'encuentros', cada item tiene: fecha, titulo, invitado (opcional, dejalo en '' si no hay) y descripcion. Guardá el archivo y listo.",
+  "inicio": "25 de julio",
+  "encuentros": [
+    {
+      "fecha": "Fecha a coordinar",
+      "titulo": "1 · Encuentro individual",
+      "invitado": "",
+      "descripcion": "Conversamos sobre Set & Setting, nos conocemos y hablamos sobre la intención, hábitos, rutinas, estado emocional y dudas que tengas."
+    },
+    {
+      "fecha": "Martes 14/7 · 18 a 19:15hs",
+      "titulo": "2 · Charla informativa: Nutrición y creatividad",
+      "invitado": "Con Lic. Ivana Marasich",
+      "descripcion": "¿Cómo preparar el cuerpo desde el alimento para el proceso y para la vida? Creatividad y alimento + espacio de consultas."
+    },
+    {
+      "fecha": "Sábado 25/7 · 10.30 a 12.30hs",
+      "titulo": "3 · Volver al deseo, volver a nacer",
+      "invitado": "",
+      "descripcion": "Ceremonia de inicio con intenciones e ingesta en vivo. Danza y círculo de intenciones."
+    },
+    {
+      "fecha": "Sábado 8/8 · 10.30 a 12.30hs",
+      "titulo": "4 · Pensar fuera de la caja",
+      "invitado": "",
+      "descripcion": "Prácticas de creatividad con tu emprendimiento. Ejercicios para clarificar tu propósito. Neuroplasticidad y microdosis."
+    },
+    {
+      "fecha": "Sábado 22/8 · 10.30 a 12.30hs",
+      "titulo": "5 · Proceso creativo y procesos personales diarios",
+      "invitado": "",
+      "descripcion": "Lluvia de ideas, ronda de networking para avanzar y organizarte. Ejercicios corporales y de escritura para bajar a tierra el proyecto. Energía femenina y masculina."
+    },
+    {
+      "fecha": "Sábado 5/9 · 10.30 a 12.30hs",
+      "titulo": "6 · Breathwork y creatividad",
+      "invitado": "Con Coach Lucía Veron",
+      "descripcion": "Respiración larga para limpiar los canales trabados e ir más allá de la mente con los proyectos, liberando barreras creativas bloqueadas desde el cuerpo."
+    },
+    {
+      "fecha": "Sábado 19/9 · 10.30 a 12.30hs",
+      "titulo": "7 · AccionAndo",
+      "invitado": "",
+      "descripcion": "Del dicho al hecho: estructura y energía masculina. Recursos concretos y evaluación de intenciones."
+    },
+    {
+      "fecha": "Sábado 3/10 · 10.30 a 12.30hs",
+      "titulo": "8 · Integración y Constancia",
+      "invitado": "",
+      "descripcion": "Autoevaluación del proceso, logros y aprendizajes, los errores como parte del camino y próximas acciones."
+    }
+  ]
+}
