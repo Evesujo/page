@@ -1,6 +1,9 @@
 {
-  "_ayuda": "Editá acá las fechas del programa. 'inicio' es el texto que aparece en la etiqueta 'Inicia el ...' del inicio. En 'encuentros', cada item tiene: fecha, titulo, invitado (opcional, dejalo en '' si no hay) y descripcion. Guardá el archivo y listo.",
+  "_ayuda": "Editá acá las fechas y precios del programa. 'inicio' es el texto que aparece en la etiqueta 'Inicia el ...' del inicio. 'precioPrimeraSesion' es lo que se paga por la primera reunión 1.1 (aparece en las preguntas frecuentes). 'precioArgentina' y 'precioInternacional' son los precios que aparecen en la sección 'La inversión'. En 'encuentros', cada item tiene: fecha, titulo, invitado (opcional, dejalo en '' si no hay) y descripcion. Guardá el archivo y listo.",
   "inicio": "8 de agosto",
+  "precioPrimeraSesion": "$45.000",
+  "precioArgentina": "$333.000",
+  "precioInternacional": "USD 280",
   "encuentros": [
     {
       "fecha": "Fecha a coordinar",

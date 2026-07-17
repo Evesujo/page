@@ -270,7 +270,7 @@
       </details>
       <details class="faq-item">
         <summary>¿Cuáles son los pasos para ser parte?</summary>
-        <div class="a">Llenás el formulario y luego me comunico con vos por WhatsApp: coordinamos horario para la primera reunión 1.1 junto al pago de esta primera sesión de $45.000. Si luego querés continuar con todo el acompañamiento, para confirmar tu lugar se completa la primera cuota. Después se sigue abonando una cuota por cada mes del programa: 3 en total.</div>
+        <div class="a">Llenás el formulario y luego me comunico con vos por WhatsApp: coordinamos horario para la primera reunión 1.1 junto al pago de esta primera sesión de <span id="precio-primera-sesion">$45.000</span>. Si luego querés continuar con todo el acompañamiento, para confirmar tu lugar se completa la primera cuota. Después se sigue abonando una cuota por cada mes del programa: 3 en total.</div>
       </details>
       <details class="faq-item">
         <summary>¿Se puede pagar en pesos o en dólares?</summary>
@@ -287,12 +287,12 @@
     <div class="price-grid">
       <div class="price feat">
         <p class="where">Para Argentina</p>
-        <div class="num">$333.000</div>
+        <div class="num" id="precio-argentina">$333.000</div>
         <small>en hasta 3 cuotas</small>
       </div>
       <div class="price">
         <p class="where">Resto del mundo</p>
-        <div class="num">USD 280</div>
+        <div class="num" id="precio-internacional">USD 280</div>
         <small>PayPal o transferencia · en hasta 3 cuotas</small>
       </div>
     </div>
@@ -345,6 +345,9 @@
         const meta = document.querySelector('meta[name="description"]');
         if (meta) meta.setAttribute('content', meta.getAttribute('content').replace(/Inicia el [^.]*\./, 'Inicia el ' + datos.inicio + '.'));
       }
+      if (datos.precioPrimeraSesion) document.getElementById('precio-primera-sesion').textContent = datos.precioPrimeraSesion;
+      if (datos.precioArgentina) document.getElementById('precio-argentina').textContent = datos.precioArgentina;
+      if (datos.precioInternacional) document.getElementById('precio-internacional').textContent = datos.precioInternacional;
       if (Array.isArray(datos.encuentros) && datos.encuentros.length) {
         document.getElementById('timeline').innerHTML = datos.encuentros.map(e => `
       <div class="tl-item"><div class="tl-card">
